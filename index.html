@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="./script/script.js" defer></script>
+    <title>Contact List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="container__header">Phone book</h2>
+      <div class="controls">
+        <div class="controls_columns">
+          <div class="controls__column">
+            <input
+              type="text"
+              id="name"
+              placeholder="Name"
+              class="contols__column__item controls__column__input"
+            />
+            <span class="focus-border"></span>
+          </div>
+          <div class="controls__column">
+            <input
+              type="text"
+              id="job"
+              placeholder="Job"
+              class="contols__column__item controls__column__input"
+            />
+            <span class="focus-border"></span>
+          </div>
+          <div class="controls__column">
+            <input
+              type="text"
+              id="phone"
+              placeholder="Phone +X XXX-XXX-XX-XX"
+              class="controls__column__item controls__column__input"
+              maxlength="20"
+            />
+            <span class="focus-border"></span>
+          </div>
+        </div>
+        <div class="controls-buttons">
+          <button
+            onclick="saveContact()"
+            class="controls__item controls__button controls__button__save"
+          >
+            Add
+          </button>
+          <button
+            onclick="clearContacts()"
+            class="controls__item controls__button controls__button__clear"
+          >
+            Clear List
+          </button>
+          <button
+            onclick="openSearchModal()"
+            class="controls__item controls__button controls__button__open-search-modal"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-table">
+        <div class="contact-table__column column">
+          <div class="column__element element">
+            <div data-id="a" class="element__letter">A</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="b" class="element__letter">B</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="c" class="element__letter">C</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="d" class="element__letter">D</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="e" class="element__letter">E</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="f" class="element__letter">F</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="g" class="element__letter">G</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="h" class="element__letter">H</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="i" class="element__letter">I</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="j" class="element__letter">J</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="k" class="element__letter">K</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="l" class="element__letter">L</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="m" class="element__letter">M</div>
+          </div>
+        </div>
+        <div class="contact-table__column column">
+          <div class="column__element element">
+            <div data-id="n" class="element__letter">N</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="o" class="element__letter">O</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="p" class="element__letter">P</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="q" class="element__letter">Q</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="r" class="element__letter">R</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="s" class="element__letter">S</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="t" class="element__letter">T</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="u" class="element__letter">U</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="v" class="element__letter">V</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="w" class="element__letter">W</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="x" class="element__letter">X</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="y" class="element__letter">Y</div>
+          </div>
+          <div class="column__element element">
+            <div data-id="z" class="element__letter">Z</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-popup">
+        <div class="search-popup__item search-popup__text">
+          <h1 class="search-header">Search contact</h1>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="search-popup__input"
+          />
+          <div class="search-popup__output"></div>
+          <button
+            class="search-popup__show-all"
+            value="Show all"
+          >Show all</button>
+          <i class="fas fa-times search-popup__close"></i>
+        </div>
+        <div class="search-popup__item search-popup__bg"></div>
+      </div>
+
+      <div class="edit-popup">
+        <div class="edit-popup__item edit-popup__text">
+          <h1 class="">Edit contact</h1>
+          <div class="edit-popup__inputs">
+            <input
+              type="text"
+              class="edit-popup__inputs__item edit-popup__inputs__name"
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              class="edit-popup__inputs__item edit-popup__inputs__job"
+              placeholder="Job"
+            />
+            <input
+              type="text"
+              id="phone"
+              class="edit-popup__inputs__item edit-popup__inputs__phone"
+              placeholder="Phone +X XXX-XXX-XX-XX"
+              maxlength="20"
+            />
+            <button
+              type="submit"
+              class="edit-popup__inputs__item edit-popup__inputs__submit"
+            >Edit</button>
+          </div>
+
+          <i class="fas fa-times edit-popup__close"></i>
+        </div>
+        <div class="edit-popup__item edit-popup__bg"></div>
+      </div>
+
+      <div id="notification" class="notification hidden">
+        <span id="notification-message"></span>
+      </div>
+    </div>
+  </body>
+</html>
